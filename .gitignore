@@ -16,3 +16,7 @@
 
 # Log files
 *.log
+
+# Executables
+main
+a.out
