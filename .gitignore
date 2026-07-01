@@ -1,3 +1,5 @@
+# Ignore compiled and generated files for Java, C, and C++
+
 # Java
 *.class
 *.jar
