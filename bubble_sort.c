@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void bubbleSort(int *arr, int size)
+{
+    for(int i = 0; i < size - 1; i++)
+    {
+        for(int j = 0; j < size - i - 1; j++)
+        {
+            if(arr[j] > arr[j + 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                arr[j] = temp;
+            }
+        }
+    }
+}
+
+int* generateNumbers(int *arr, int size)
+{
+    for(int i = 0; i < size; i++)
+    {
+        arr[i] = rand() % 100000;
+    }
+
+    return arr;
+}
+
+
+int main()
+{
+    srand(time(NULL));
+
+    int size1 = 40000;
+    int size2 = 80000;
+
+    int *arr1 = (int*)malloc(size1 * sizeof(int));
+    int *arr2 = (int*)malloc(size2 * sizeof(int));
+
+    arr1 = generateNumbers(arr1, size1);
+
+    clock_t start1 = clock();
+
+    bubbleSort(arr1, size1);
+
+    clock_t end1 = clock();
+
+    double time1 =
+    ((double)(end1 - start1)) / CLOCKS_PER_SEC;
+
+    arr2 = generateNumbers(arr2, size2);
+
+    clock_t start2 = clock();
+
+    bubbleSort(arr2, size2);
+
+    clock_t end2 = clock();
+
+    double time2 =
+    ((double)(end2 - start2)) / CLOCKS_PER_SEC;
+
+    printf("Ratio : %.2f\n", time2 / time1);
+
+    free(arr1);
+    free(arr2);
+
+    return 0;
+}
