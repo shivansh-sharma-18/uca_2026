@@ -24,3 +24,4 @@ main
 a.out
 auditlog
 stat_system_call
+signal_handler
